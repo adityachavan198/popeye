@@ -113,9 +113,7 @@ def resample_stimulus(stim_arr, scale_factor=0.05, mode='nearest',
     """
     
     dims = np.shape(stim_arr)
-    resampled_arr = np.zeros((int(round(dims[0] * scale_factor)),
-                              int(round(dims[1] * scale_factor)),
-                              dims[2]), dtype=dtype)
+    resampled_arr = np.zeros((int(round(dims[0] * scale_factor)), int(round(dims[1] * scale_factor)), dims[2]), dtype=dtype)
     
     # loop
     for tr in np.arange(dims[-1]):

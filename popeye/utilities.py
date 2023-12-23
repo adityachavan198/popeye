@@ -193,7 +193,7 @@ def recast_estimation_results(output, grid_parent, overloaded=False):
                 voxel_dat = list(fit.overloaded_estimate)
             else:
                 voxel_dat = list(fit.estimate)
-                
+            
             voxel_dat.append(fit.rsquared)
             voxel_dat = np.array(voxel_dat)
             
@@ -201,8 +201,10 @@ def recast_estimation_results(output, grid_parent, overloaded=False):
             estimates[tuple(fit.voxel_index)] = voxel_dat
             
     # get header information from the gridParent and update for the prf volume
-    aff = grid_parent.get_affine()
-    hdr = grid_parent.get_header()
+    # aff = grid_parent.get_affine()
+    aff = grid_parent._affine     
+    # hdr = grid_parent.get_header()
+    hdr = grid_parent._header
     hdr.set_data_shape(dims)
     
     # recast as nifti
@@ -254,8 +256,10 @@ def recast_xval_results(output, bootstraps, indices, grid_parent, overloaded=Fal
         pool.map(parallel_loader, indices)
         
     # header & affine
-    aff = grid_parent.get_affine()
-    hdr = grid_parent.get_header()
+    # aff = grid_parent.get_affine()
+    aff = grid_parent._affine    
+    # hdr = grid_parent.get_header()
+    hdr = grid_parent._header
     hdr.set_data_shape(dims)
     
     # recast as nifti
