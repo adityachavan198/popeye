@@ -820,7 +820,8 @@ def xval_bundle(bootstraps, kfolds, Fit, model, data, grids, bounds, indices, au
 def multiprocess_bundle(Fit, model, data, grids, bounds, indices, auto_fit=True, verbose=1, Ns=None):
     
     # num voxels
-    num_voxels = np.int(np.shape(data)[0])
+    # num_voxels = np.int(np.shape(data)[0])
+    num_voxels = int(np.shape(data)[0])
     
     # expand out grids and bounds
     grids = [grids,]*num_voxels
